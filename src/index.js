@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import {Provider} from 'react-redux'
 import reportWebVitals from './reportWebVitals';
+import AppRoutes from './router/AppRoutes';
+import './index.css';
+import configStore from './store/configStore';
+
+const store = configStore();
+
+const Jsx =()=>(
+  <Provider store={store}>
+    <AppRoutes />
+  </Provider>
+)
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Jsx />
   </React.StrictMode>,
   document.getElementById('root')
 );
