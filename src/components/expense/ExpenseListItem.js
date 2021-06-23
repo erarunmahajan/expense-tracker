@@ -1,13 +1,15 @@
 import React from "react";
 import { useHistory } from "react-router";
-import { removeExpense } from "../../actions/expensesAction";
+import {  startRemoveExpense } from "../../actions/expensesAction";
 import moment from 'moment';
+
 
 const ExpenseListItem = (props) => {
   let history = useHistory();
   const removeCurrentExpense =()=>{
-    props.dispatch(removeExpense({id:props.expense.id}));
+    props.dispatch(startRemoveExpense({id:props.expense.id}));
   }
+
   return (
     <>
       <hr />

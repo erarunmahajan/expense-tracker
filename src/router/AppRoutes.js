@@ -1,29 +1,25 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import {Header, ErrorPage, AddExpense, EditExpense, ExpenseDashboard,HelpPage} from '../components/index'
+import { Router, Switch, Route } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+import { ErrorPage, AddExpense, EditExpense, ExpenseDashboard, HelpPage } from '../components/index'
+import LoginPage from '../components/LoginPage';
+import  PrivateRoutes  from './PrivateRoutes';
+import  PublicRoutes  from './PublicRoutes';
 
 
+export const history = createHistory();
 
 const AppRoutes = () => {
   return (
-    <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/">
-          <ExpenseDashboard />
-        </Route>
-        <Route path="/create">
-          <AddExpense/>
-        </Route>
-        <Route path="/edit/:id" strict>
-          <EditExpense/>
-        </Route>
-        <Route path="/help">
-          <HelpPage/>
-        </Route>
-        <Route path="*">
-          <ErrorPage/>
-        </Route>
+    <Router history={history}>
+      <Switch> 
+        <PrivateRoutes path="/" component={ExpenseDashboard} exact/>
+        <PublicRoutes path="/login" component={LoginPage} />
+        <PrivateRoutes path="/create" component={AddExpense} />
+        <PrivateRoutes path="/edit/:id" component={EditExpense} />
+        <PrivateRoutes path="/help" component={HelpPage} />
+        <Route path="*" component={ErrorPage} />
+        
       </Switch>
     </Router>
   );

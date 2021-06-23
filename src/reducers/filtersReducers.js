@@ -1,5 +1,6 @@
-const defaultFiltersState = { text: '', sortBy: 'date', startDate: undefined, endDate: undefined };
+import moment from 'moment'
 
+const defaultFiltersState = { text: '', sortBy: 'date', startDate: moment().startOf('month'), endDate: moment().endOf('month') };
 export const filtersReducers = (state = defaultFiltersState, action) => {
   switch (action.type) {
     case 'SET_TEXT_FILTER':
@@ -15,17 +16,17 @@ export const filtersReducers = (state = defaultFiltersState, action) => {
     case 'SORT_BY_DATE':
       return {
         ...state,
-        sortBy:'date'
+        sortBy: 'date'
       }
     case 'SET_START_DATE':
       return {
-      ...state,
-      startDate:action.startDate
+        ...state,
+        startDate: action.startDate
       }
     case 'SET_END_DATE':
       return {
         ...state,
-        endDate:action.endDate
+        endDate: action.endDate
       }
     default:
       return state;

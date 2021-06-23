@@ -20,6 +20,8 @@ export const expensesReducers = (state = defaultExpensesState, action) => {
         }
         return expense
       })
+    case 'FETCH_EXPENSES':
+      return action.expenses
     default:
       return state
   }

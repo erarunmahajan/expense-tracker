@@ -19,14 +19,14 @@ export const setSortByDate=()=>({
 })
 // 4. set filter for start date
 
-export const setStartDate=({startDate=''})=>({
+export const setStartDate=(startDate)=>({
   type:'SET_START_DATE',
   startDate
 })
 
 // 5. set filter for end date
 
-export const setEndDate=({endDate=''})=>({
+export const setEndDate=(endDate)=>({
   type:'SET_END_DATE',
   endDate
 })
